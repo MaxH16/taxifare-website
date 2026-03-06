@@ -71,7 +71,7 @@ st.title("🇧🇪 Belgian Taxi Fare Predictor")
 '''
 ## Bienvenue une fois ! Calcule le prix de ta course entre deux pintes.
 '''
-audio_file = open('brabanconne.mp3', 'rb')
+audio_file = open('soif.mp3', 'rb')
 audio_bytes = audio_file.read()
 
 st.audio(audio_bytes, format='audio/mp3')
