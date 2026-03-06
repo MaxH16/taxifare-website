@@ -11,8 +11,9 @@ def local_css():
     <style>
     /* Changement du fond de l'application */
     .stApp {
-        background-color: #1a1a1a; /* Noir profond */
-        color: #ffffff;
+        background-image: url("https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fbonpourtoi.ca%2Fles-questions-les-plus-demandees-du-web-sur-la-biere%2F&ved=0CBYQjRxqFwoTCJDty6qwi5MDFQAAAAAdAAAAABAI&opi=89978449");
+        background-attachment: fixed;
+        background-size: cover;
     }
 
     /* Personnalisation des titres */
