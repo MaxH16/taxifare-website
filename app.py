@@ -4,13 +4,71 @@ import pandas as pd
 import numpy as np
 import requests
 
-'''
-# TaxiFare LeWagon
-'''
+import streamlit as st
 
-st.markdown('''
-Follow the instructions to request your ride !
-''')
+def local_css():
+    st.markdown("""
+    <style>
+    /* Changement du fond de l'application */
+    .stApp {
+        background-color: #1a1a1a; /* Noir profond */
+        color: #ffffff;
+    }
+
+    /* Personnalisation des titres */
+    h1, h2, h3 {
+        color: #FFCD00 !important; /* Jaune Drapeau Belge */
+        font-family: 'Helvetica Neue', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 3px solid #E30613; /* Ligne rouge sous les titres */
+        padding-bottom: 10px;
+    }
+
+    /* Style des boutons (Le bouton "Estimate Fare" sera Rouge) */
+    .stButton>button {
+        background-color: #E30613 !important; /* Rouge Drapeau Belge */
+        color: white !important;
+        border-radius: 20px !important;
+        border: 2px solid #FFCD00 !important;
+        font-weight: bold;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    .stButton>button:hover {
+        background-color: #FFCD00 !important;
+        color: black !important;
+        transform: scale(1.02);
+    }
+
+    /* Style des inputs */
+    .stTextInput>div>div>input {
+        background-color: #333333;
+        color: #FFCD00 !important;
+        border: 1px solid #E30613 !important;
+    }
+
+    /* La petite touche : bordure de la page aux couleurs du drapeau */
+    header {
+        border-top: 10px solid #000000;
+        border-bottom: 5px solid #FFCD00;
+    }
+
+    /* Footer ou Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #000000;
+        border-right: 5px solid #E30613;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+local_css()
+
+# --- Contenu de ton app ---
+st.title("🇧🇪 Belgian Taxi Fare Predictor")
+st.write("Bienvenue une fois ! Calcule le prix de ta course entre deux pintes.")
+
 
 '''
 ## Select the date and time you want to be picked up
