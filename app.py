@@ -10,59 +10,38 @@ def local_css():
     st.markdown("""
     <style>
     /* Changement du fond de l'application */
-    .stApp {
+    .stApp {{
         background-image: url("https://bonpourtoi.ca/app/uploads/2020/04/BPT-Article-biere-tinyjpg.jpeg");
         background-attachment: fixed;
         background-size: cover;
-    }
+    }}
 
-    /* Personnalisation des titres */
-    h1, h2, h3 {
-        color: #FFCD00 !important; /* Jaune Drapeau Belge */
-        font-family: 'Helvetica Neue', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border-bottom: 3px solid #E30613; /* Ligne rouge sous les titres */
-        padding-bottom: 10px;
-    }
+    /* 2. Le bloc noir transparent derrière tout le contenu */
+        /* On cible le conteneur principal de Streamlit */
+        .main .block-container {{
+            background-color: rgba(0, 0, 0, 0.75); /* Noir à 75% d'opacité */
+            padding: 40px !important;
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px); /* Optionnel : floute l'image derrière le bloc */
+            border: 1px solid rgba(255, 205, 0, 0.3); /* Bordure jaune très discrète */
+        }}
 
-    /* Style des boutons (Le bouton "Estimate Fare" sera Rouge) */
-    .stButton>button {
-        background-color: #E30613 !important; /* Rouge Drapeau Belge */
-        color: white !important;
-        border-radius: 20px !important;
-        border: 2px solid #FFCD00 !important;
-        font-weight: bold;
-        transition: 0.3s;
-        width: 100%;
-    }
+        /* 3. On s'assure que tous les textes sont bien blancs ou jaunes */
+        h1, h2, h3, p, span, label {{
+            color: white !important;
+        }}
 
-    .stButton>button:hover {
-        background-color: #FFCD00 !important;
-        color: black !important;
-        transform: scale(1.02);
-    }
-
-    /* Style des inputs */
-    .stTextInput>div>div>input {
-        background-color: #333333;
-        color: #FFCD00 !important;
-        border: 1px solid #E30613 !important;
-    }
-
-    /* La petite touche : bordure de la page aux couleurs du drapeau */
-    header {
-        border-top: 10px solid #000000;
-        border-bottom: 5px solid #FFCD00;
-    }
-
-    /* Footer ou Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #000000;
-        border-right: 5px solid #E30613;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+        /* On force le jaune pour les titres pour le rappel Belgique */
+        h1, h2 {{
+            color: #FFCD00 !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 local_css()
 
