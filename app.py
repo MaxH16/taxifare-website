@@ -18,7 +18,7 @@ def local_css():
 
     /* Personnalisation des titres */
     h1, h2, h3 {
-        color: #FFCD00 !important; /* Jaune Drapeau Belge */
+        color: #E30613 !important; /* Jaune Drapeau Belge */
         font-family: 'Helvetica Neue', sans-serif;
         text-transform: uppercase;
         letter-spacing: 2px;
