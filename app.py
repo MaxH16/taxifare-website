@@ -67,8 +67,9 @@ local_css()
 
 # --- Contenu de ton app ---
 st.title("🇧🇪 Belgian Taxi Fare Predictor")
-st.write("Bienvenue une fois ! Calcule le prix de ta course entre deux pintes.")
-
+'''
+## Bienvenue une fois ! Calcule le prix de ta course entre deux pintes.
+'''
 
 '''
 ## Select the date and time you want to be picked up
