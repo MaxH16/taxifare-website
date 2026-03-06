@@ -28,30 +28,37 @@ st.write('Your pickup is scheduled on', d, 'at', t, 'sharp !')
 '''
 ## Enter your pickups coordinates
 '''
-pickup_latitude_input = st.text_input('Pickup latitude', )
-pickup_longitude_input = st.text_input('Pickup longitude', )
+pickup_latitude_input = st.text_input('Pickup latitude', '40.7128')
+pickup_longitude_input = st.text_input('Pickup longitude', '-74.0060')
 
 pickup_latitude = float(pickup_latitude_input)
 pickup_longitude = float(pickup_longitude_input)
 
 st.write('You will be picked up at', pickup_latitude,',', pickup_longitude)
 
-df = pd.DataFrame({'lat': [pickup_latitude], 'lon': [pickup_longitude]})
-st.map(df)
+# df_pickup = pd.DataFrame({'lat': [pickup_latitude], 'lon': [pickup_longitude]})
+# st.map(df_pickup)
 
 '''
 ## Enter your dropoff coordinates
 '''
-dropoff_latitude_input = st.text_input('Dropoff latitude', )
-dropoff_longitude_input = st.text_input('Dropoff longitude', )
+dropoff_latitude_input = st.text_input('Dropoff latitude', '40.7306')
+dropoff_longitude_input = st.text_input('Dropoff longitude', '-73.9352')
 
 dropoff_latitude = float(dropoff_latitude_input)
 dropoff_longitude = float(dropoff_longitude_input)
 
 st.write('You will be picked up at', dropoff_latitude,',', dropoff_longitude)
 
-df = pd.DataFrame({'lat': [dropoff_latitude], 'lon': [dropoff_longitude]})
-st.map(df)
+# df_dropoff = pd.DataFrame({'lat': [dropoff_latitude], 'lon': [dropoff_longitude]})
+# st.map(df_dropoff)
+
+df_trip = pd.DataFrame({
+            'lat': [pickup_latitude, dropoff_latitude],
+            'lon': [pickup_longitude, dropoff_longitude]
+        })
+
+st.map(df_trip)
 
 '''
 ## Enter the amount of passengers for the ride
