@@ -2,8 +2,7 @@ import streamlit as st
 import datetime
 import pandas as pd
 import numpy as np
-
-
+import requests
 
 '''
 # TaxiFare LeWagon
@@ -28,8 +27,11 @@ st.write('Your pickup is scheduled on', d, 'at', t, 'sharp !')
 '''
 ## Enter your pickups coordinates
 '''
-pickup_latitude_input = st.text_input('Pickup latitude', '40.7128')
-pickup_longitude_input = st.text_input('Pickup longitude', '-74.0060')
+col1, col2 = st.columns(2)
+with col1:
+    pickup_latitude_input = st.text_input('Pickup latitude', '40.7128')
+with col2:
+    pickup_longitude_input = st.text_input('Pickup longitude', '-74.0060')
 
 pickup_latitude = float(pickup_latitude_input)
 pickup_longitude = float(pickup_longitude_input)
@@ -42,8 +44,11 @@ st.write('You will be picked up at', pickup_latitude,',', pickup_longitude)
 '''
 ## Enter your dropoff coordinates
 '''
-dropoff_latitude_input = st.text_input('Dropoff latitude', '40.7306')
-dropoff_longitude_input = st.text_input('Dropoff longitude', '-73.9352')
+col1, col2 = st.columns(2)
+with col1:
+    dropoff_latitude_input = st.text_input('Dropoff latitude', '40.7306')
+with col2:
+    dropoff_longitude_input = st.text_input('Dropoff longitude', '-73.9352')
 
 dropoff_latitude = float(dropoff_latitude_input)
 dropoff_longitude = float(dropoff_longitude_input)
@@ -66,27 +71,32 @@ st.map(df_trip)
 passenger_num = st.number_input('Number of passengers', min_value = 1, max_value = 8,)
 
 st.write('Your ride will feature ', passenger_num, ' passenger(s)')
-'''
-## Once we have these, let's call our API in order to retrieve a prediction
-
-See ? No need to load a `model.joblib` file in this app, we do not even need to know anything about Data Science in order to retrieve a prediction...
-
-🤔 How could we call our API ? Off course... The `requests` package 💡
-'''
 
 url = 'https://taxifare.lewagon.ai/predict'
 
-if url == 'https://taxifare.lewagon.ai/predict':
 
-    st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
+params = {
+    "pickup_datetime": f"{d} {t}",
+    "pickup_longitude": pickup_longitude,
+    "pickup_latitude": pickup_latitude,
+    "dropoff_longitude": dropoff_longitude,
+    "dropoff_latitude": dropoff_latitude,
+    "passenger_count": passenger_num
+}
 
-'''
+url = 'https://taxifare.lewagon.ai/predict'
 
-2. Let's build a dictionary containing the parameters for our API...
+if st.button('Estimate Fare'):
+    response = requests.get(url, params=params)
 
-3. Let's call our API using the `requests` package...
+    if response.status_code == 200:
+        # --- 4. Récupération de la prédiction ---
+        prediction = response.json().get('fare', "Error")
 
-4. Let's retrieve the prediction from the **JSON** returned by the API...
+        # ## Affichage du résultat
+        st.success(f"### The estimated fare is: ${prediction:.2f}")
+    else:
+        st.error("Could not connect to the API. Please check your parameters or URL.")
 
-## Finally, we can display the prediction to the user
-'''
+if st.button('Click here to enjoy your ride !'):
+    st.balloons()
