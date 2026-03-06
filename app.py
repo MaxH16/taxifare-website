@@ -53,7 +53,7 @@ with col2:
 dropoff_latitude = float(dropoff_latitude_input)
 dropoff_longitude = float(dropoff_longitude_input)
 
-st.write('You will be picked up at', dropoff_latitude,',', dropoff_longitude)
+st.write('You will be dropped off at', dropoff_latitude,',', dropoff_longitude)
 
 # df_dropoff = pd.DataFrame({'lat': [dropoff_latitude], 'lon': [dropoff_longitude]})
 # st.map(df_dropoff)
@@ -71,8 +71,6 @@ st.map(df_trip)
 passenger_num = st.number_input('Number of passengers', min_value = 1, max_value = 8,)
 
 st.write('Your ride will feature ', passenger_num, ' passenger(s)')
-
-url = 'https://taxifare.lewagon.ai/predict'
 
 
 params = {
