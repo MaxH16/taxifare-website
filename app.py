@@ -10,7 +10,7 @@ def local_css():
     st.markdown("""
     <style>
     /* Changement du fond de l'application */
-    .stApp {{
+    .stApp {
         background-image: url("https://bonpourtoi.ca/app/uploads/2020/04/BPT-Article-biere-tinyjpg.jpeg");
         background-attachment: fixed;
         background-size: cover;
