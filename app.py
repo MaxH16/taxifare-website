@@ -15,12 +15,13 @@ Follow the instructions to request your ride !
 '''
 ## Select the date and time you want to be picked up
 '''
-
-d = st.date_input(
-    "Select your pickup day",
-    datetime.date(2019, 7, 6))
-
-t = st.time_input('Select an hour of pickup', datetime.time(8, 45))
+col1, col2 = st.columns(2)
+with col1:
+    d = st.date_input(
+        "Select your pickup day",
+        datetime.date(2019, 7, 6))
+with col2:
+    t = st.time_input('Select an hour of pickup', datetime.time(8, 45))
 
 st.write('Your pickup is scheduled on', d, 'at', t, 'sharp !')
 
